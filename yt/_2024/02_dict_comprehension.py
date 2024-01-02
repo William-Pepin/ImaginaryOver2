@@ -4,11 +4,15 @@ from yt.helper.code_helper import CodeHelper
 from yt.helper.title_helper import TitleHelper
 
 
-class DictComprehensionScene(Scene):
+class Intro(Scene):
     _title = ("Dictionnary", "comprehension", "in Python")
 
     def construct(self):
         TitleHelper(self).show_title(self._title)
+
+
+class Scene_1(Scene):
+    def construct(self):
         code = \
             r"""
 id = ["1F", "2C", "3B", "4D", "5G"]
