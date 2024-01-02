@@ -1,31 +1,30 @@
 from manim import *
 import config as cf
+from default_scene import DefaultScene
 
 
-config.background_color = "#1C202A"
-config.frame_width = 9
-config.frame_height = 16
-config.pixel_height = 1920
-config.pixel_width = 1080
-
-default_font = "Menlo"
 
 
-class DictComprehensionScene(Scene):
+
+class DictComprehensionScene(DefaultScene):
+    _title = ("Dictionnary","comprehension","in Python")
+
     def construct(self):
+        self.title(self._title)
+        
         raw_identificators = ["1F", "2C", "3B", "4D", "5G"]
         raw_names = ["Steve", "Steven", "Sarah", "Bob", "Alice"]
 
         identificators = VGroup(
             *[
-                Text(text, font=default_font, font_size=48, color=cf.BLUE)
+                Text(text, font=cf.DEFAULT_FONT, font_size=48, color=cf.BLUE)
                 for text in raw_identificators
             ]
         )
 
         names = VGroup(
             *[
-                Text(text, font=default_font, font_size=24, color=cf.BLUE)
+                Text(text, font=cf.DEFAULT_FONT, font_size=24, color=cf.BLUE)
                 for text in raw_names
             ]
         )
@@ -37,10 +36,10 @@ class DictComprehensionScene(Scene):
         names.shift(UP * 4)
 
         brackets = VGroup(
-            Text("[", font=default_font, font_size=64, color=cf.YELLOW).next_to(
+            Text("[", font=cf.DEFAULT_FONT, font_size=64, color=cf.YELLOW).next_to(
                 identificators, LEFT
             ),
-            Text(f"]", font=default_font, font_size=64, color=cf.YELLOW).next_to(
+            Text(f"]", font=cf.DEFAULT_FONT, font_size=64, color=cf.YELLOW).next_to(
                 identificators, RIGHT
             ),
         )
@@ -48,13 +47,13 @@ class DictComprehensionScene(Scene):
         brackets_2 = VGroup(
             Text(
                 "[",
-                font=default_font,
+                font=cf.DEFAULT_FONT,
                 font_size=64,
                 color=cf.YELLOW,
             ).next_to(names, LEFT),
             Text(
                 f"]",
-                font=default_font,
+                font=cf.DEFAULT_FONT,
                 font_size=64,
                 color=cf.YELLOW,
             ).next_to(names, RIGHT),
@@ -67,7 +66,7 @@ class DictComprehensionScene(Scene):
         identificators_end = VGroup(
             *[
                 Text(
-                    text, font=default_font, font_size=64, color=cf.BLUE, line_spacing=4
+                    text, font=cf.DEFAULT_FONT, font_size=64, color=cf.BLUE, line_spacing=4
                 )
                 for text in reversed(raw_identificators)
             ]
@@ -77,7 +76,7 @@ class DictComprehensionScene(Scene):
             *[
                 Text(
                     text,
-                    font=default_font,
+                    font=cf.DEFAULT_FONT,
                     font_size=64,
                     color=cf.BLUE,
                     line_spacing=4,
@@ -90,7 +89,7 @@ class DictComprehensionScene(Scene):
             *[
                 Text(
                     ":",
-                    font=default_font,
+                    font=cf.DEFAULT_FONT,
                     font_size=64,
                     color=cf.ORANGE,
                     line_spacing=4,
@@ -139,10 +138,10 @@ class DictComprehensionScene_2(Scene):
         base_shapes.arrange(RIGHT).shift(UP * 4)
 
         brackets = VGroup(
-            Text("[", font=default_font, font_size=64, color=cf.YELLOW).next_to(
+            Text("[", font=cf.DEFAULT_FONT, font_size=64, color=cf.YELLOW).next_to(
                 base_shapes, LEFT
             ),
-            Text(f"]", font=default_font, font_size=64, color=cf.YELLOW).next_to(
+            Text(f"]", font=cf.DEFAULT_FONT, font_size=64, color=cf.YELLOW).next_to(
                 base_shapes, RIGHT
             ),
         )
@@ -162,7 +161,7 @@ class DictComprehensionScene_2(Scene):
 
         double_dots = VGroup(
             *[
-                Text(":", font=default_font, font_size=64, color=cf.ORANGE)
+                Text(":", font=cf.DEFAULT_FONT, font_size=64, color=cf.ORANGE)
                 for _ in range(3)
             ]
         )
