@@ -1,17 +1,38 @@
 from manim import *
 import config as cf
-from default_scene import DefaultScene
+from helper.code_helper import CodeHelper
+from helper.title_helper import TitleHelper
 
 
-
-
-
-class DictComprehensionScene(DefaultScene):
-    _title = ("Dictionnary","comprehension","in Python")
+class DictComprehensionScene(Scene):
+    _title = ("Dictionnary", "comprehension", "in Python")
 
     def construct(self):
-        self.title(self._title)
-        
+        TitleHelper(self).show_title(self._title)
+        code = \
+            r"""
+id = ["1F", "2C", "3B", "4D", "5G"]
+names = ["Steve", "Stephen", 
+        "Sarah", "Bob", "Alice"]
+
+id_to_name = {id: name for id, name
+        in zip(identificators, names)}
+"""
+        code_helper = CodeHelper(self)
+        code_layout = code_helper.generate_code_layout(code)
+
+        code_helper.show_code_block(code_layout)
+        code_helper.write_code(code_layout)
+
+        self.play(Indicate(code_layout.code[0][0:2]))
+        self.play(Indicate(code_layout.code[1][0:5]))
+        self.play(Indicate(code_layout.code[4][23:26]))
+        self.play(Indicate(code_layout.code[5][1:4]))
+
+        code_layout.generate_target()
+        code_layout.target.shift(5*DOWN)
+        self.play(MoveToTarget(code_layout))
+
         raw_identificators = ["1F", "2C", "3B", "4D", "5G"]
         raw_names = ["Steve", "Steven", "Sarah", "Bob", "Alice"]
 
@@ -59,7 +80,8 @@ class DictComprehensionScene(DefaultScene):
             ).next_to(names, RIGHT),
         )
         self.play(
-            FadeIn(identificators), FadeIn(brackets), FadeIn(names), FadeIn(brackets_2)
+            FadeIn(identificators), FadeIn(
+                brackets), FadeIn(names), FadeIn(brackets_2)
         )
         self.wait(0.5)
 
@@ -119,11 +141,8 @@ class DictComprehensionScene(DefaultScene):
             FadeIn(double_dots[4], run_time=1.2),
         )
         self.wait()
-        self.play(
-            FadeOut(identificators, run_time=0.5),
-            FadeOut(double_dots, run_time=0.5),
-            FadeOut(names, run_time=0.5),
-        )
+        self.play(FadeOut(identificators, double_dots,
+                  names, code_layout, run_time=0.5),)
 
 
 class DictComprehensionScene_2(Scene):

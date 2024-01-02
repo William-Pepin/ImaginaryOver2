@@ -26,13 +26,7 @@ config.frame_width = 9
 config.frame_height = 16
 config.pixel_height = 1920
 config.pixel_width = 1080
-config.frame_rate = 60
+
 
 # Stylization
 Text.set_default(font=DEFAULT_FONT, color=WHITE)
-
-
-
-
-
-
