@@ -1,5 +1,8 @@
 # Manim related
 media/*
+examples/media/*
+_2023/examples/media/*
+_2024/examples/media/*
 quickstart/media/*
 
 # Byte-compiled / optimized / DLL files
