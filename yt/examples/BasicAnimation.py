@@ -1,6 +1,6 @@
 from manim import *
 
-import config
+import config.config as config
 
 
 class BasicAnimation(Scene):
@@ -43,7 +43,8 @@ class LaggingGroup(Scene):
             .arrange_in_grid(4, 5)
             .scale(0.75)
         )
-        self.play(AnimationGroup(*[FadeIn(s) for s in squares], lag_ratio=0.15))
+        self.play(AnimationGroup(*[FadeIn(s)
+                  for s in squares], lag_ratio=0.15))
 
 
 class AnimateSyntax(Scene):
@@ -90,7 +91,8 @@ class AnimationMechanism(Scene):
         s = Square()
         s.save_state()
         self.play(FadeIn(s))
-        self.play(s.animate.set_color(PURPLE).set_opacity(0.5).shift(2 * LEFT).scale(3))
+        self.play(s.animate.set_color(PURPLE).set_opacity(
+            0.5).shift(2 * LEFT).scale(3))
         self.play(s.animate.shift(5 * DOWN).rotate(PI / 4))
         self.wait()
         self.play(Restore(s), run_time=2)

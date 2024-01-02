@@ -1,7 +1,7 @@
 from manim import *
-import config as cf
-from helper.code_helper import CodeHelper
-from helper.title_helper import TitleHelper
+from yt.config.config import cf
+from yt.helper.code_helper import CodeHelper
+from yt.helper.title_helper import TitleHelper
 
 
 class DictComprehensionScene(Scene):

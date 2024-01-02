@@ -1,5 +1,5 @@
 from manim import *
-import config as cf
+from yt.config.config import cf
 from typing import Iterable
 
 

@@ -1,5 +1,5 @@
 from manim import *
-import config as cf
+import yt.config.config as cf
 
 
 config.background_color = "#1F2430"
@@ -60,7 +60,8 @@ class Dict_1(Scene):
             ).next_to(names, RIGHT),
         )
         self.play(
-            FadeIn(identificators), FadeIn(brackets), FadeIn(names), FadeIn(brackets_2)
+            FadeIn(identificators), FadeIn(
+                brackets), FadeIn(names), FadeIn(brackets_2)
         )
         self.wait(0.5)
 

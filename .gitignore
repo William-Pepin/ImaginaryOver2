@@ -1,9 +1,8 @@
 # Manim related
-media/*
-examples/media/*
-_2023/examples/media/*
-_2024/examples/media/*
-quickstart/media/*
+yt/examples/media/*
+yt/_2023/media/*
+yt/_2024/media/*
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
