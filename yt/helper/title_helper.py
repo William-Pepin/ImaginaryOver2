@@ -9,7 +9,7 @@ class TitleHelper():
 
     def show_title(self, text: Iterable[str]):
         title = Paragraph(*text, font_size="48",
-                          alignment="center", line_spacing=1)
+                          alignment="center", line_spacing=1, color=cf.WHITE)
         self._scene.play(FadeIn(title, run_time=cf.RATE_MEDIUM,
                                 rate_func=rate_functions.ease_in_cubic))
         self._scene.wait(2)

@@ -23,3 +23,7 @@ class CodeHelper():
     def write_code(self, code_layout: Code) -> None:
         for line in code_layout.code:
             self._scene.play(AddTextLetterByLetter(line, time_per_char=0.07))
+
+    def highlight(self, text: Text) -> Indicate:
+        return Indicate(text, run_time=cf.RATE_VERY_SLOW,
+                        rate_func=rate_functions.there_and_back_with_pause)

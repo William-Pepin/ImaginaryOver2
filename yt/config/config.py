@@ -13,11 +13,12 @@ class cf:
     PURPLE = "#BF62BC"
     BLUE = "#69BCE6"
     DARK_GREY = "#939392"
-    GREEN = "#D5FF80"
+    GREEN = "#DDFE90"
     BACKGROUND = "#1C202A"
     LINE_BACKBROUND = "#1B1F28"
 
     # Speed
+    RATE_VERY_SLOW = 2
     RATE_SLOW = 1
     RATE_MEDIUM = 0.5
     RATE_FAST = 0.25
@@ -32,4 +33,4 @@ config.pixel_width = 1080
 
 
 # Stylization
-Text.set_default(font=cf.DEFAULT_FONT, color=cf.WHITE)
+Text.set_default(font=cf.DEFAULT_FONT, color=cf.GREY)
