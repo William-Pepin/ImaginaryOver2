@@ -1,5 +1,6 @@
 from manim import *
-import yt.config.config as cf
+from yt.config.config import cf
+from yt.helper.title_helper import TitleHelper
 
 
 config.background_color = "#1F2430"
@@ -11,26 +12,31 @@ config.pixel_width = 1080
 default_font = "Menlo"
 
 
-class Dict_1(Scene):
+class Intro(Scene):
     def construct(self):
-        raw_identificators = ["1F", "2C", "3B", "4D", "5G"]
-        raw_names = ["Steve", "Steven", "Sarah", "Bob", "Alice"]
+        TitleHelper(self).show_title(["Dictionnary", "in", "Python"])
 
-        identificators = VGroup(
+
+class Scene_1(Scene):
+    def construct(self):
+        keys_strings = ["id", "name", "surname", "category", "logged_in"]
+        data_strings = ["935", "John", "Smith", "Employee", "False"]
+
+        keys = VGroup(
             *[
                 Text(text, font=default_font, font_size=48, color=cf.BLUE)
-                for text in raw_identificators
+                for text in keys_strings
             ]
         )
 
-        names = VGroup(
+        data = VGroup(
             *[
                 Text(text, font=default_font, font_size=24, color=cf.BLUE)
-                for text in raw_names
+                for text in data_strings
             ]
         )
 
-        identificators.arrange(LEFT)
+        data.arrange(RIGHT)
         names.arrange(LEFT)
 
         identificators.shift(UP * 6)
@@ -128,98 +134,76 @@ class Dict_1(Scene):
         )
 
 
-class Dict_2(Scene):
+class Scene_2(Scene):
     def construct(self):
-        raw_sentence = [
-            "All",
-            "the",
-            "world's",
-            "a",
-            "stage",
-            "and",
-            "all",
-            "the",
-            "men",
-            "and",
-            "women",
-            "merely",
-            "players.",
-        ]
-        text_sentence = VGroup(
-            *[
-                Text(
-                    word,
-                    font=default_font,
-                    font_size=48,
-                    color=cf.GREEN,
-                    should_center=True,
-                )
-                for word in raw_sentence
-            ]
+        base_shapes = VGroup(
+            Square(color=cf.GREY, side_length=0.82),
+            Circle(color=cf.BLUE, radius=0.4),
+            Square(color=cf.GREY, side_length=0.82),
+            Triangle(color=cf.PURPLE).scale(0.45),
+            Circle(color=cf.BLUE, radius=0.4),
         )
-        text_sentence.arrange(RIGHT).shift(UP * 4).align_to(text_sentence, UP)
-        for i in range(1, len(text_sentence)):
-            text_sentence[i].align_to(text_sentence[0])
+        base_shapes.arrange(RIGHT).shift(UP * 4)
 
         brackets = VGroup(
-            Text("[", font=default_font, font_size=48, color=cf.YELLOW).next_to(
-                text_sentence, LEFT
+            Text("[", font=cf.DEFAULT_FONT, font_size=64, color=cf.YELLOW).next_to(
+                base_shapes, LEFT
             ),
-            Text(f"]", font=default_font, font_size=48, color=cf.YELLOW).next_to(
-                text_sentence, RIGHT
+            Text(f"]", font=cf.DEFAULT_FONT, font_size=64, color=cf.YELLOW).next_to(
+                base_shapes, RIGHT
             ),
         )
 
-        self.play(FadeIn(text_sentence, brackets))
+        self.play(FadeIn(base_shapes, brackets))
         self.wait(0.5)
 
-    # shape_end = (
-    #     VGroup(
-    #         Square(color=cf.GREY, side_length=0.82),
-    #         Circle(color=cf.BLUE, radius=0.4),
-    #         Triangle(color=cf.PURPLE).scale(0.45),
-    #     )
-    #     .arrange(DOWN)
-    #     .shift(LEFT * 0.5)
-    # )
+        shape_end = (
+            VGroup(
+                Square(color=cf.GREY, side_length=0.82),
+                Circle(color=cf.BLUE, radius=0.4),
+                Triangle(color=cf.PURPLE).scale(0.45),
+            )
+            .arrange(DOWN)
+            .shift(LEFT * 0.5)
+        )
 
-    # double_dots = VGroup(
-    #     *[
-    #         Text(":", font=default_font, font_size=64, color=cf.ORANGE)
-    #         for _ in range(3)
-    #     ]
-    # )
+        double_dots = VGroup(
+            *[
+                Text(":", font=cf.DEFAULT_FONT, font_size=64, color=cf.ORANGE)
+                for _ in range(3)
+            ]
+        )
 
-    # count_state = VGroup(
-    #     *[DecimalNumber(1, font_size=64, num_decimal_places=0) for _ in range(3)]
-    # )
+        count_state = VGroup(
+            *[DecimalNumber(1, font_size=64, num_decimal_places=0) for _ in range(3)]
+        )
 
-    # self.play(
-    #     Transform(base_shapes[0], shape_end[0]),
-    #     FadeIn(double_dots[0].next_to(shape_end[0])),
-    #     FadeIn(count_state[0].next_to(double_dots[0], RIGHT * 2.5)),
-    # )
-    # self.play(
-    #     Transform(base_shapes[1], shape_end[1]),
-    #     FadeIn(double_dots[1].next_to(shape_end[1])),
-    #     FadeIn(count_state[1].next_to(double_dots[1], RIGHT * 2.5)),
-    # )
-    # self.play(
-    #     Transform(base_shapes[2], shape_end[0]),
-    #     ChangeDecimalToValue(count_state[0], 2),
-    # )
+        self.play(
+            Transform(base_shapes[0], shape_end[0]),
+            FadeIn(double_dots[0].next_to(shape_end[0])),
+            FadeIn(count_state[0].next_to(double_dots[0], RIGHT * 2.5)),
+        )
+        self.play(
+            Transform(base_shapes[1], shape_end[1]),
+            FadeIn(double_dots[1].next_to(shape_end[1])),
+            FadeIn(count_state[1].next_to(double_dots[1], RIGHT * 2.5)),
+        )
+        self.play(
+            Transform(base_shapes[2], shape_end[0]),
+            ChangeDecimalToValue(count_state[0], 2),
+        )
 
-    # self.play(
-    #     Transform(base_shapes[3], shape_end[2]),
-    #     FadeIn(double_dots[2].next_to(shape_end[2])),
-    #     FadeIn(count_state[2].next_to(double_dots[2], RIGHT * 2.5)),
-    # )
+        self.play(
+            Transform(base_shapes[3], shape_end[2]),
+            FadeIn(double_dots[2].next_to(shape_end[2])),
+            FadeIn(count_state[2].next_to(double_dots[2], RIGHT * 2.5)),
+        )
 
-    # self.play(
-    #     Transform(base_shapes[4], shape_end[1]),
-    #     ChangeDecimalToValue(count_state[1], 2),
-    #     FadeOut(brackets),
-    # )
+        self.play(
+            Transform(base_shapes[4], shape_end[1]),
+            ChangeDecimalToValue(count_state[1], 2),
+            FadeOut(brackets),
+        )
 
-    # self.wait()
-    # self.play(FadeOut(count_state, double_dots, base_shapes))
+        self.wait()
+        self.play(FadeOut(count_state, double_dots, base_shapes))
