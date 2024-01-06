@@ -79,5 +79,5 @@ print(id_to_name["2C"])
         self.play(code_helper.highlight(m_keys.elements[1][0:3]))
         self.play(code_helper.highlight(m_values.elements[1][0:6]))
 
-        self.wait(cf.RATE_SLOW * 3)
+        self.wait(cf.RATE_END)
         fade_out_all(self)

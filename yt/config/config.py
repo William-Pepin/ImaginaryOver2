@@ -22,6 +22,7 @@ class cf:
     RATE_SLOW = 1
     RATE_MEDIUM = 0.5
     RATE_FAST = 0.25
+    RATE_END = 3
 
 
 # Viewport
